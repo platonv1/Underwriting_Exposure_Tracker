@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Insured>
+
+@{
+    ViewData ["Title"] = "ViewPolicies";
+}
+
+<div class="container ml-0">
+    <div class="row">
+       
+    </div>
+</div>
+<div class="table-responsive">
+    <div class="row">
+        <div class="col-8 label-align-left">
+            <h2> Name:  @ViewBag.FullName</h2>
+        </div>
+        <div class="col-4 label-align-right">
+            <a class="btn btn-primary btn-lg" asp-controller="Exposure" asp-action="ViewDetails" asp-route-Identifier="@TempData["Identifier"]">Accumulation</a>
+            <a class="btn btn-light" asp-controller="Exposure" asp-action="Index" data-toggle="tooltip" data-placement="top" title="Return to Homepage"><i class="fa fa-home"></i></a>
+        </div>
+    </div>
+    <table class="table text-center table-striped table-hover" id="basic-datatables" cellspacing="1">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th>POLICY NO</th>
+                <th>TOTAL SUM REINSURED</th>
+                <th>TOTAL REINSURED AMOUNT</th>
+                <th>BENEFIT TYPE</th>
+                <th>BASE/RIDER</th>
+                <th>SOA PERIOD</th>
+                <th>BORDEREAUX YEAR</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach(var item in Model)
+            {
+            <tr>
+                <td>@item.policyno</td>
+                <td>@item.sumassured</td>
+                <td>@item.reinsurednetamountatrisk</td>
+                <td>@item.benefittype</td>
+                <td>@item.baserider</td>
+                <td>@item.soaperiod</td>
+                <td>@item.bordereauxyear</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    $('#basic-datatables').DataTable({
+        searching: false,
+    });
+
+    @*var Accumulation = function (@ViewBag.Identifier) {
+        $.ajax({
+            type: "GET",
+            url: "/Exposure/ViewAccumulation",
+            data: { Identifier: Identifier }
+        })
+    }*@
+</script>

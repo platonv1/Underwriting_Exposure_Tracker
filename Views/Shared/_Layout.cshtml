@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Exposure Underwriting Tracker</title>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
+
+	<!-- Fonts and icons -->
+	<script src="~/Atlantis Theme/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+            custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../Atlantis Theme/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+	  
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="~/Atlantis Theme/css/bootstrap.min.css">
+	<link rel="stylesheet" href="~/Atlantis Theme/css/atlantis.min.css">
+</head>
+<body>
+	<partial name="_Scripts" />
+	<div class="wrapper static-sidebar">
+		<div class="main-header">
+			<!-- Logo Header -->
+			<div class="logo-header" data-background-color="dark2">
+				
+				<a asp-controller="LifeData" asp-action="Index" class="logo">
+					<h1 class="navbar-brand text-light">Exposure Tracker</h1>
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+				</button>
+				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+				<div class="nav-toggle">
+					<button class="btn btn-toggle toggle-sidebar">
+						<i class="icon-menu"></i>
+					</button>
+				</div>
+			</div>
+			<!-- End Logo Header -->
+
+			<!-- Navbar Header -->
+			<partial name="_partialNavbar" />
+			<!-- End Navbar -->
+		</div>
+
+		<div class="classic-grid">
+			<partial name="_partialSidebar" />
+
+			<div class="main-panel">
+				<div class="content">
+					<div class="panel-header bg-dark2">@*bg-primary-gradient*@
+						<div class="page-inner py-5">
+							
+						</div>
+					</div>
+					<div class="page-inner mt--5">
+						<div class="row row-card-no-pd mt--2">
+							<div class="col-lg-12">
+								<div class="card card-stats card-round">
+									<div class="card-body">
+										@RenderBody()
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				<footer class="footer">
+					<div class="container-fluid">
+                        <nav class="pull-left">
+                           
+                        </nav>
+                        <div class="copyright ml-auto">
+                            <div>
+                                <img src="~/custom/NATRE-logo.png" alt="NAT-RE" width="165" height="75">
+                            </div>
+                            <div>
+                                <a asp-controller="Exposure" asp-action="Index">Exposure Tracker Version 1.1.0.0</a>
+                            </div>
+                            
+                        </div>				
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

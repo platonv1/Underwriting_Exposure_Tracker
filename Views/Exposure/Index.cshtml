@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Insured>
+@{
+    ViewData ["Title"] = "Index";
+}
+
+<div class="table-responsive">
+    <table class="table text-center table-striped table-hover" id="basic-datatables" cellspacing="1">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th>Edit</th>
+                <th>Policy no</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Full Name</th>
+                <th>Gender</th>
+                <th>ClientID</th>
+                <th>Date of Birth</th>
+                <th>Ceding Company</th>
+                <th>Cedant Code</th>
+                <th>Type Of Business</th>
+                <th>Bordereaux Filename</th>
+                <th>Bordereaux Year</th>
+                <th>SOA Period</th>
+                <th>Certificate</th>
+                <th>Plan</th>
+                <th>Benefit Type</th>
+                <th>Currency</th>
+                <th>Plan Effective Date</th>
+                <th>Sum Assured</th>
+                <th>Reinsured NAR</th>
+                <th>Mortality Rating</th>
+                <th>Status</th>
+                @*<th>Action</th>*@
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach(var item in Model)
+            {
+            <tr>
+                <td>
+                    <div class="form-button-action">
+                        <button type="submit" class="btn btn-link btn-lg" id="Edit" onclick="Edit(@item.id)"><a class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="top" title="Edit Session"></a></button>
+                    </div>
+                </td>
+                <td>
+                    <a asp-controller="Exposure" asp-action="ViewDetails" asp-route-Identifier="@item.identifier" data-toggle="tooltip" data-placement="top" title="View Accumulation">@item.policyno</a>
+                </td>
+                <td>@item.firstname</td>
+                <td>@item.middlename</td>
+                <td>@item.lastname</td>
+                <td>@item.fullName</td>
+                <td>@item.gender</td>
+                <td>@item.clientid</td>
+                <td>@Convert.ToDateTime(@item.dateofbirth).ToString("MM/dd/yyyy")</td>
+                <td>@item.cedingcompany</td>
+                <td>@item.cedantcode</td>
+                <td>@item.typeofbusiness</td>
+                <td>@item.bordereauxfilename</td>
+                <td>@item.bordereauxyear</td>
+                <td>@item.soaperiod</td>
+                <td>@item.certificate</td>
+                <td>@item.plan</td>
+                <td>@item.benefittype</td>
+                <td>@item.currency</td>
+                <td>@Convert.ToDateTime(@item.planeffectivedate).ToString("MM/dd/yyyy")</td>
+                <td>@item.sumassured</td>
+                <td>@item.reinsurednetamountatrisk</td>
+                <td>@item.mortalityrating</td>
+                <td>@item.status</td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="myModalForm" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body" id="myModalBodydiv" data-backdrop="static" data-keyboard="false">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var table = $('#basic-datatables').DataTable({
+        searching: false,
+        "lengthMenu": [10,20,30,40,50],
+        "pageLength": 10,
+        "oLanguage": {
+            "sEmptyTable": "No Record Found"
+        }
+    });
+
+    var Edit = function (id) {
+        $.ajax({
+            type: "GET",
+            url: "/Exposure/EditSession",
+            data: { Id: id},
+            success: function (response) {
+                $("#myModalBodydiv").html(response),
+                    /* $('#myModalForm').modal({ backdrop: 'static', keyboard: false })*/
+                $("#myModalForm").modal("show"),
+                $("#myModalForm").appendTo("body");
+            }
+        })
+    }
+
+</script>
+

@@ -1,0 +1,24 @@
+﻿
+
+
+<div class="modal-header no-bd">
+    <h1 class="modal-title">
+        Upload File
+    </h1>
+    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+<form enctype="multipart/form-data" method="post" asp-controller="Exposure" asp-action="ImportExcelFile">
+
+    <input type="file" name="ExcelFile" />
+    
+
+    <div class="modal-footer no-bd">
+        <button type="submit" id="Submit" name="Submit" class="btn btn-info">Proceed</button>
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+    </div>
+
+</form>

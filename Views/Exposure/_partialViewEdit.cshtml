@@ -1,0 +1,115 @@
+﻿
+@model Insured
+
+<div class="modal-header no-bd">
+    <h1 class="fw-mediumbold">
+        Edit Session
+    </h1>
+
+    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<form method="post" asp-action="Edit">
+    <div class="row">
+        <div class="col-4" style="text-align:left">
+            <div class="mb-4">
+                <label for="squareInput">Policy No</label>
+                <input asp-for=policyno class="form-control border border-secondary rounded" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4" style="text-align:left">
+            <div class="mb-4">
+                <input asp-for=id class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=policyno class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=identifier class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=fullName class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=clientid class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=cedantcode class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=bordereauxfilename class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=bordereauxyear class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=certificate class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=plan class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=baserider class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=benefittype class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=currency class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=mortalityrating class="form-control border border-secondary rounded" type="hidden">
+                <input asp-for=dateuploaded class="form-control border border-secondary rounded" type="hidden">
+                <label for="squareInput">First Name</label>
+                <input asp-for=firstname class="form-control border border-secondary" id="squareInput">
+            </div>
+            <div class="mb-4">
+                <label for="squareInput">Gender</label>
+                <input class="form-control" id="dob" asp-for=gender>
+            </div>
+            <div class="mb-4">
+                <label for="squareInput">Ceding Company</label>
+                <input class="form-control" asp-for=cedingcompany>
+            </div>
+        </div>
+
+        <div class="col-4 mb-2" style="text-align:left">
+            <div class="mb-4">
+                <label for="squareInput">Middle Name</label>
+                <input asp-for=middlename class="form-control border border-secondary" id="squareInput">
+            </div>
+            <div class="mb-4">
+                <label for="squareInput">Date of Birth</label>
+                <input class="form-control" id="birth" asp-for="dateofbirth">
+            </div>
+            <div class="mb-4">
+                <label for="squareInput">Plan Effective Date</label>
+                <input class="form-control" id="ped" asp-for="planeffectivedate">
+            </div>
+        </div>
+
+        <div class="col-4 mb-2" style="text-align:left">
+            <div class="mb-4">
+                <label for="squareInput">Last Name</label>
+                <input asp-for=lastname class="form-control border border-secondary" id="squareInput">
+            </div>
+            <div class="mb-2">
+                <label for="squareInput">Type of Business</label>
+                <input class="form-control" asp-for=typeofbusiness>
+            </div>
+            <div class="mb-2">
+                <label for="squareInput">Status</label>
+                <input class="form-control" asp-for=status>
+            </div>
+        </div>
+
+        <div class="col-4 mb-5  " style="text-align:left">
+            <div class="mb-4">
+                <label for="squareInput">Sum Assured/NAR</label>
+                <input class="form-control" asp-for=sumassured>
+            </div>
+        </div>
+
+        <div class="col-4 mb-5" style="text-align:left">
+            <div class="mb-4">
+                <label for="squareInput">Reinsured NAR</label>
+                <input class="form-control" asp-for=reinsurednetamountatrisk>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-footer no-bd">
+        <button type="submit" class="btn btn-primary btn-lg">Save</button>
+        <button type="button" id="btnClose" class="btn btn-dark btn-lg" data-bs-dismiss="modal">Close</button>
+    </div>
+</form>
+
+@*<div class="modal-footer no-bd">
+        <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" id="btnClose">Cancel</button>
+    </div>*@
+
+<script type="text/javascript">
+
+    jQuery("#birth").datepicker();
+    jQuery("#ped").datepicker();
+</script>
